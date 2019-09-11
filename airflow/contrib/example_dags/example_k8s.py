@@ -38,7 +38,7 @@ try:
         namespace='default',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
-        arguments=["echo", '{{ params.key }}'],
+        arguments=["echo {{ params.key }}"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_id="task",
