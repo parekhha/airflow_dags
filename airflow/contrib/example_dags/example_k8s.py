@@ -39,6 +39,7 @@ try:
         name="airflow-test-pod",
         task_id="task",
         get_logs=True,
+        in_cluster=True,
         dag=dag,
         is_delete_operator_pod=False,
         tolerations=tolerations
