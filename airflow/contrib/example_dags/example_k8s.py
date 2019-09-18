@@ -20,10 +20,7 @@ try:
     dag = DAG(
         dag_id='example_kubernetes_operator',
         default_args=args,
-        schedule_interval=None,
-        params={
-            "key": "10"
-        }
+        schedule_interval=None
     )
 
     tolerations = [
@@ -38,7 +35,7 @@ try:
         namespace='default',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
-        arguments=["echo {{ params.key }}"],
+        arguments=["echo {{ dag_run.conf['key'] }}"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_id="task",
