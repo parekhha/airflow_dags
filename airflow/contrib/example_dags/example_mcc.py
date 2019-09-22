@@ -75,7 +75,7 @@ try:
         is_delete_operator_pod=False,
         tolerations=tolerations
     )
- serviceNow >> opsRam >> mcc 
+    serviceNow >> opsRam >> mcc 
 except ImportError as e:
     log.warning("Could not import KubernetesPodOperator: " + str(e))
     log.warning("Install kubernetes dependencies with: "
