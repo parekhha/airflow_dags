@@ -38,7 +38,8 @@ try:
         arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
-        task_id="Configuring Service Now",
+        task_description="Configuring Service Now",
+        task_id="service_now"
         get_logs=True,
         in_cluster=True,
         dag=dag,
@@ -53,7 +54,8 @@ try:
         arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
-        task_id="Configuring Ops ram",
+        task_description="Configuring Ops ram",
+        task_id="ops_ram"
         get_logs=True,
         in_cluster=True,
         dag=dag,
@@ -68,7 +70,8 @@ try:
         arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
-        task_id="Configuring mcc",
+        task_description="Configuring mcc",
+        task_id="mcc"
         get_logs=True,
         in_cluster=True,
         dag=dag,
