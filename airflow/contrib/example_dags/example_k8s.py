@@ -10,7 +10,7 @@ log = LoggingMixin().log
 try:
     # Kubernetes is optional, so not available in vanilla Airflow
     # pip install 'apache-airflow[kubernetes]'
-    from airflow.operators.glhc_operator import GLHCOperator
+    from glhc_plugin import GLHCOperator
 
     args = {
         'owner': 'Airflow',
