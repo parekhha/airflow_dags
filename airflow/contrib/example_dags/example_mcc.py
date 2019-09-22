@@ -39,7 +39,7 @@ try:
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_description="Configuring Service Now",
-        task_id="service_now"
+        task_id="service_now",
         get_logs=True,
         in_cluster=True,
         dag=dag,
@@ -55,7 +55,7 @@ try:
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_description="Configuring Ops ram",
-        task_id="ops_ram"
+        task_id="ops_ram",
         get_logs=True,
         in_cluster=True,
         dag=dag,
@@ -71,7 +71,7 @@ try:
         labels={"foo": "bar"},
         name="airflow-test-pod",
         task_description="Configuring mcc",
-        task_id="mcc"
+        task_id="mcc",
         get_logs=True,
         in_cluster=True,
         dag=dag,
