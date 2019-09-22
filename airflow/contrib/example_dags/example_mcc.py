@@ -18,7 +18,7 @@ try:
     }
 
     dag = DAG(
-        dag_id='example_kubernetes_operator',
+        dag_id='example_mcc',
         default_args=args,
         schedule_interval=None
     )
@@ -31,21 +31,51 @@ try:
         }
     ]
 
-    k = GLHCOperator(
+    serviceNow = GLHCOperator(
         namespace='default',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
-        arguments=["echo {{ dag_run.conf['key'] }}"],
+        arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
         labels={"foo": "bar"},
         name="airflow-test-pod",
-        task_id="task",
+        task_id="Configuring Service Now",
         get_logs=True,
         in_cluster=True,
         dag=dag,
         is_delete_operator_pod=False,
         tolerations=tolerations
     )
-
+    
+    opsRam = GLHCOperator(
+        namespace='default',
+        image="ubuntu:16.04",
+        cmds=["bash", "-cx"],
+        arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
+        labels={"foo": "bar"},
+        name="airflow-test-pod",
+        task_id="Configuring Ops ram",
+        get_logs=True,
+        in_cluster=True,
+        dag=dag,
+        is_delete_operator_pod=False,
+        tolerations=tolerations
+    )
+    
+    mcc = GLHCOperator(
+        namespace='default',
+        image="ubuntu:16.04",
+        cmds=["bash", "-cx"],
+        arguments=["echo {{ dag_run.conf['key'] }}; sleep 5"],
+        labels={"foo": "bar"},
+        name="airflow-test-pod",
+        task_id="Configuring mcc",
+        get_logs=True,
+        in_cluster=True,
+        dag=dag,
+        is_delete_operator_pod=False,
+        tolerations=tolerations
+    )
+ serviceNow >> opsRam >> mcc 
 except ImportError as e:
     log.warning("Could not import KubernetesPodOperator: " + str(e))
     log.warning("Install kubernetes dependencies with: "
