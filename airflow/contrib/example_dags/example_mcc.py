@@ -43,7 +43,7 @@ try:
         get_logs=True,
         in_cluster=True,
         dag=dag,
-        is_delete_operator_pod=False,
+        is_delete_operator_pod=True,
         tolerations=tolerations
     )
     
@@ -59,7 +59,7 @@ try:
         get_logs=True,
         in_cluster=True,
         dag=dag,
-        is_delete_operator_pod=False,
+        is_delete_operator_pod=True,
         tolerations=tolerations
     )
     
@@ -75,7 +75,7 @@ try:
         get_logs=True,
         in_cluster=True,
         dag=dag,
-        is_delete_operator_pod=False,
+        is_delete_operator_pod=True,
         tolerations=tolerations
     )
     serviceNow >> opsRam >> mcc 
